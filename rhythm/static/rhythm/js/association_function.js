@@ -3,7 +3,12 @@
  * method8: 出租车迁移关系图
  * method9：分时段目的地划分图
  */
-var method_choice="";
+var method_choice = "";
+//绘制kdtree划分图时的坐标轴范围，由数据极值而定
+var Left;
+var Right;
+var Top;
+var Bottom;
 function submit_data_chart8_9(method) {
 	var csrftoken = getCookie('csrftoken');
 	//包装数据
@@ -26,79 +31,242 @@ function submit_data_chart8_9(method) {
 		'method10': $("#method10  option:selected").val(),
 		'dataset': $('input[name=dataset]:checked').val()
 	};
-	
+
 	//暂时给method9随机赋值
-	if(formData['method']=='method9'){
-		formData['method']='method2';
-		formData['method2']=formData['method9_1'];
-		formData['dataset']='dataset1.csv'
+	if (formData['method'] == 'method9') {
+		formData['method'] = 'method2';
+		formData['method2'] = formData['method9_1'];
+		formData['dataset'] = 'dataset1.csv'
 	}
 	//发送后submited=true，并更换加载图片，表示正在加载。
 
 	method_choice = formData["method"];
-//	$('#image_chart3').attr('src', '/static/rhythm/img/loading.gif');
+	//	$('#image_chart3').attr('src', '/static/rhythm/img/loading.gif');
 
-		console.log(formData);
+	console.log(formData);
 
 	//发送请求
-	$.ajaxSetup({
-		beforeSend: function (xhr, settings) {
-			if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-				xhr.setRequestHeader("X-CSRFToken", csrftoken);
-			}
-		}
-	});
 	//如果方法为method8，则直接从json中获取，而不是访问服务器。
 	if (method_choice == "method8") {
 		handle_method8(formData);
 	} else {
-		$.ajax({ 
-			//几个参数需要注意一下
-			type: "POST", //方法类型
-			dataType: "json", //预期服务器返回的数据类型
-			url: "/rhythm/select/", //url
-			//		url:"/static/rhythm/demo_test.txt",
-			//		url: "/static/rhythm/dataset.txt",
-			data: formData,
-			success: function (result) {
-				//有返回值
-				submitted = false;
-				handle_method9(result);
-			},
-			error: function () {
-				alert("异常！");
-				//				submitted = false;
-				$('#image_chart3').attr('src', '/static/rhythm/img/instruction.png');
-			}
-		});
+		handle_method9(formData);
 	}
 
 }
 
-function handle_method9(result){
-	console.log(result); //打印服务端返回的数据(调试用)
-	//method8加载echarts，否则销毁echarts加载图片
-
+function handle_method9(parameter) {
 	method_choice = "";
-
-	$('#image_chart3').attr('src', '/static/rhythm/img/instruction.png');
-	var image_full_name = result["image_full_name"];
-	img_address = "/static/rhythm/img/generated/" + image_full_name;
-	$('#image_chart3').attr('src', img_address);
-
-	//显示参数
-	var extra_information = jQuery.parseJSON(result["extra_information"]);
-	console.log(extra_information);
-	$('#information_entropy').text(extra_information["information_entropy"]);
-	$('#varience').text(extra_information["varience"]);
-	$('#standard_deviation').text(extra_information["standard_deviation"]);
-	$('#mean').text(extra_information["mean"]);
-	$('#max').text(extra_information["max"]);
-	$('#min').text(extra_information["min"]);
-	$('#skew').text(extra_information["skew"]);
-	$('#kurtosis').text(extra_information["kurtosis"]);
-	$('#len').text(extra_information["len"]);
+	depth = parameter["method9_1"];
+	time = parameter["method9_2"];
+	url = "/static/rhythm/json/taxi_gps_one_hour_result_kdtree/2014-08-05_h" + time + "_dd" + depth + ".json";
+	$.getJSON(url, function (result) {
+		console.log(result);
+		runMethod9(result, depth)
+		//		submitted = false;
+	});
 }
+
+function runMethod9(result, depth) {
+	var kdtree = result.kd_tree_not_leaf_node;
+	var lines = handle_data_method9(kdtree, depth);
+	console.log(lines);
+	var dom = document.getElementById("chart_2");
+	var myChart = echarts.init(dom);
+	var option = {
+		title: {
+			text: '分时段目的地划分图',
+			left: 'center'
+		},
+		backgroundColor: '#ffffff',
+		grid: {
+			show: true
+			//			borderColor: '#EE2C2C'
+		},
+		xAxis: {
+			name: 'longitude',
+			show: true,
+			nameLocation: 'center',
+			max: 104.6097,
+			min: 103.2731,
+			nameGap: 40,
+			//			max: Right+0.01,
+			//			min: Left-0.01,
+			splitLine: {
+				show: false
+			}
+		},
+		yAxis: {
+			name: 'latitude',
+			show: true,
+			nameLocation: 'center',
+			min: 30.2906,
+			max: 31.0325,
+			nameGap: 40,
+			//			min: Bottom-0.01,
+			//			max: Top+0.01,
+			splitLine: {
+				show: false
+			}
+
+		},
+		series: [{
+			type: 'line',
+			lineStyle: {
+				normal: {
+					color: '#fffff',
+					opacity: 0,
+					curveness: 0
+				}
+			},
+			data: [{
+				name: 'a',
+				value: [30.290685, 103.273147]
+			}, {
+				name: 'aa',
+				value: [30.290685, 104.609696]
+			}, {
+				name: 'aaa',
+				value: [31.032475, 104.609696]
+			}, {
+				name: 'aaaa',
+				value: [31.032475, 103.273147]
+			}]
+		}, {
+			type: 'lines',
+			itemStyle: {
+				normal: {
+					color: '#7a00e9',
+					opacity: 1,
+					borderWidth: 1,
+					shadowBlur: 8,
+					shadowColor: '#fff'
+				}
+			},
+			coordinateSystem: 'cartesian2d',
+			lineStyle: {
+				normal: {
+					color: '#fffff',
+					opacity: 1,
+					curveness: 0
+				}
+			},
+			data: lines
+		}]
+	};
+	myChart.setOption(option);
+}
+
+function handle_data_method9(kdtree, depth) {
+	var lines = [];
+	var length = kdtree.length;
+	console.log(kdtree, 'here');
+	//	console.log(length);
+	for (var i = 0; i < length; i++) {
+
+		var node = kdtree[i];
+		var left = node["hrect"][0][1];
+		var right = node["hrect"][1][1];
+		var top = node["hrect"][1][0];
+		var bottom = node["hrect"][0][0];
+		//		if(i==0){
+		//			Left = left;
+		//			Right = right;
+		//			Top = top;
+		//			Bottom = bottom;
+		//			
+		//		}else{
+		//			Left = (Left<left?Left:left);
+		//			Right = (Right>right?Right:right);
+		//			Top =(Top>top?Top:top);
+		//			Bottom = (Bottom<bottom?Bottom:bottom);
+		//		}
+		//		console.log(left,bottom , right ,top);
+		var tmp1 = {
+			coords: [
+				[left, bottom],
+				[left, top]
+			]
+		};
+		var tmp2 = {
+			coords: [
+				[left, top],
+				[right, top]
+			]
+		};
+		var tmp3 = {
+			coords: [
+				[right, top],
+				[right, bottom]
+			]
+		};
+		var tmp4 = {
+			coords: [
+				[right, bottom],
+				[left, bottom]
+			]
+		};
+		lines.push(tmp1);
+		lines.push(tmp2);
+		lines.push(tmp3);
+		lines.push(tmp4);
+	}
+	return lines;
+
+
+	//图的经纬度范围
+	//	var left = 30.290685;
+	//	var right = 31.032475;
+	//	var top = 104.609696;
+	//	var bottom = 103.273147;
+	//	dfs_method9(0, 0, left, right, top, bottom);
+
+	console.log(lines)
+	return lines;
+
+	//深搜，遍历整个树，每个中间节点生成一条线，保存在lines中
+	function dfs_method9(depth, index, left, right, top, bottom) {
+		//只有中间节点才需要画线
+		if (kdtree[index].left_nodeptr == -1 || kdtree[index].right_nodeptr == -1) {
+			return;
+		}
+		//depth%2==0时绘制横线，下面是左子树，上面是右子树
+		//depth%2==0时绘制竖线，左面是左子树，右面是右子树
+		if (depth % 2 == 0) {
+			var tmp = kdtree[index];
+			var x = kdtree[index]['hrect'][0];
+			var y = kdtree[index]['hrect'][1];
+			var line = {
+				coords: [
+					[left, y],
+					[right, y]
+				]
+			};
+			lines.push(line);
+			//下面是左子树
+			dfs_method9(depth + 1, kdtree[index].left_nodeptr, left, right, y, bottom);
+			//上面是右子树
+			dfs_method9(depth + 1, kdtree[index].right_nodeptr, left, right, top, y);
+		} else {
+			var tmp = kdtree[index];
+			var x = kdtree[index]['hrect'][0];
+			var y = kdtree[index]['hrect'][1];
+			var line = {
+				coords: [
+					[x, top],
+					[y, bottom]
+				]
+			};
+			lines.push(line);
+			//左边是左子树
+			dfs_method9(depth + 1, kdtree[index].left_nodeptr, left, x, top, bottom);
+			//右边是右子树
+			dfs_method9(depth + 1, kdtree[index].right_nodeptr, left, y, top, top);
+		}
+		return;
+	}
+}
+
 
 function handle_method8(parameter) {
 	method_choice = "";
@@ -108,7 +276,7 @@ function handle_method8(parameter) {
 	$.getJSON(url, function (result) {
 		console.log(result);
 		runMethod8(result, depth)
-			//		submitted = false;
+		//		submitted = false;
 	});
 }
 
@@ -178,8 +346,8 @@ function runMethod8(result, depth) {
 	}
 
 
-//	$("#final_image").hide();
-//	$("#chart_1").addClass("div_method8")
+	//	$("#final_image").hide();
+	//	$("#chart_1").addClass("div_method8")
 	var dom = document.getElementById("chart_1");
 
 	var myChart = echarts.init(dom);

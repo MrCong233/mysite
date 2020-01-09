@@ -2,12 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
+from json import dumps
+from pandas import DataFrame
+import os.path
+from .DivisionMethods import interface_to_methods, process_upload_original, delete_previous_imgs
 
-import json
-
-from .models import Image
-from .algorithm import re_gui21
-from .algorithm import re_kdtree
 # Create your views here.
 
 
@@ -19,16 +18,12 @@ def index_association(request):
     return render(request, 'rhythm/index_association.html')
 
 
-def results(request, dataset_name, method_name, parameter):
-    context = {
-        'image_name': None,
-    }
-    # return HttpResponse(method_name + str(parameter))
-    return render(request, 'rhythm/index.html', context)
+def index_test(request):
+    return render(request, 'rhythm/index_test.html')
 
 
 def select(request):
-    # get method_full_name
+    # get method_name
     post_ = request.POST
     method_name = post_['method']
     # first seven methods names
@@ -44,15 +39,58 @@ def select(request):
     if method_name in first_seven_methods:
         content = deal_with_first_seven_methods(post_, method_name)
         return HttpResponse(content)
-    # else:
-    #     if method_name == 'trip_times_network':
-    #         content = deal_with_trip_times_network(post_)
-    #         return HttpResponse(content)
+
+
+def upload_csv(request):
+    if "GET" == request.method:
+        return HttpResponseRedirect(reverse("rhythm:index"))
+    # if not GET, then proceed
+    if "csv_file" not in request.FILES:
+        result = {
+            # 'error': "Please upload file first."
+            'error': "请先上传文件."
+        }
+        return HttpResponse(dumps(result, ensure_ascii=False))
+        # return HttpResponse(result['error'])
+    csv_file = request.FILES["csv_file"]
+    if not csv_file.name.endswith('.csv'):
+        result = {
+            # 'error': "File is not CSV type"
+            'error': "该文件不是CSV格式."
+        }
+        return HttpResponse(dumps(result, ensure_ascii=False))
+        # return HttpResponse(result['error'])
+    # if file is too large, return
+    file_size = csv_file.size/(10**6)
+    if file_size > 40.0:
+        result = {
+            # 'error': "Uploaded file is too big ({:.2%} MB).".format(file_size)
+            'error': "文件的大小不能超过40MB."
+        }
+        return HttpResponse(dumps(result, ensure_ascii=False))
+        # return HttpResponse(result['error'])
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    # new_row = DataFrame(chunk)
+    file_path = '{}\\DivisionMethods\\dataset\\upload_original.csv'.format(
+        current_dir)
+    with open(file_path, 'w+') as f:
+        for chunk in csv_file.chunks():
+            f.write(chunk.decode("utf-8"))
+    retn_result = process_upload_original.process_original_csv()
+    if retn_result == 1:
+        result = {
+            'error': "上传的文件不符合规定格式."
+        }
+        return HttpResponse(dumps(result, ensure_ascii=False))
+        # return HttpResponse(result['error'])
+    result = {
+        'error': ""
+    }
+    return HttpResponse(dumps(result, ensure_ascii=False))
+    # return HttpResponse(result['error'])
 
 
 def deal_with_first_seven_methods(post, method_name):
-    # get dataset_name
-    dataset_name = post['dataset']
     if method_name == "method1":
         method_full_name = "2d_equal_grid"
     if method_name == "method2":
@@ -74,74 +112,14 @@ def deal_with_first_seven_methods(post, method_name):
     else:
         parameter.append(int(post[method_name + "_1"]))
         parameter.append(int(post[method_name + "_2"]))
-    # get image and context
-    img_full_name = dataset_name + "-" + method_full_name
-    for parameter_ in parameter:
-        img_full_name += "-" + str(parameter_)
-    img_full_name += ".png"
-    image = Image.objects.filter(
-        image_full_name=img_full_name
-    )
-    if not image:
-        img_full_name_, extra_information = re_gui21.figure_to_img(
-            dataset_name, method_full_name, parameter)
-        temp_image = Image(image_full_name=img_full_name_,
-                           extra_information=json.dumps(extra_information),
-                           upload_time=timezone.now())
-        temp_image.save()
-    else:
-        temp_image = image[0]
+    # delete previous images
+    delete_previous_imgs.delete_pngs()
+    # generate img
+    _, extra = interface_to_methods.interface_to_generate_img(
+        "upload_processed", method_full_name, parameter, False)
+    # return img info
     context = {
-        "image_full_name": temp_image.image_full_name,
-        "extra_information": temp_image.extra_information,
+        # "image_full_name": img_addr,
+        "extra_information": extra,
     }
-    return json.dumps(context)
-
-
-def select_to_generate_images(request):
-    # Image.objects.all().delete()
-    # dataset = ['dataset1.csv', 'dataset2.csv']
-    dataset = ['dataset1.csv']
-    # method_single = [
-    #             "2d_equal_grid","2d_kdtree",
-    #             "3d_equal_grid", "3d_kdtree",
-    #             #  "3d_slice_merge"
-    # ]
-    method_double = [
-        # "time_space",
-        "space_time"
-    ]
-    # parameter_single = [
-    #                     [5, 30, 5], # 2 * 6
-    #                     [2, 10, 1], # 2 * 9
-    #                     [2, 20, 1], # 2 * 19
-    #                     [2, 10, 1], # 2 * 9
-    #                     # [5, 30, 5]# 2 * 6
-    # ]
-    parameter_double = [
-        # [[2, 24, 1], [2, 10, 1]],# 23*9*2
-        [[5, 10, 1], [3, 10, 1]]  # 8*8*2
-    ]
-    # for dataset_ in dataset:
-    #     for method_ in method_single:
-    #         parameter = parameter_single[method_single.index(method_)]
-    #         for i in range(parameter[0], parameter[1] + parameter[2], parameter[2]):
-    #             img_full_name_, extra_information = re_gui21.figure_to_img(dataset_, method_, list([i]))
-    #             temp_image = Image(image_full_name=img_full_name_,
-    #                     extra_information=json.dumps(extra_information),
-    #                     upload_time=timezone.now())
-    #             temp_image.save()
-
-    for dataset_1 in dataset:
-        for method_1 in method_double:
-            parameter1 = parameter_double[method_double.index(method_1)]
-            for i in range(parameter1[0][0], parameter1[0][1] + parameter1[0][2], parameter1[0][2]):
-                for j in range(parameter1[1][0], parameter1[1][1] + parameter1[1][2], parameter1[1][2]):
-                    img_full_name_, extra_information = re_gui21.figure_to_img(
-                        dataset_1, method_1, list([i, j]))
-                    temp_image = Image(image_full_name=img_full_name_,
-                                       extra_information=json.dumps(
-                                           extra_information),
-                                       upload_time=timezone.now())
-                    temp_image.save()
-    return HttpResponse(json.dumps(""))
+    return dumps(context)

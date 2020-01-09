@@ -1,0 +1,62 @@
+<!-- <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>  -->
+{% if dataset %}
+	使用{{ dataset }}和
+	{% if method_name == "2d_equal_grid" %}
+		二维等网络
+	{% endif %}
+	{% if method_name == "2d_kdtree" %}
+		二维kdtree
+	{% endif %}
+	{% if method_name == "3d_equal_grid" %}
+		三维等网络
+	{% endif %}
+	{% if method_name == "3d_kdtree" %}
+		三维kdtree
+	{% endif %}
+	{% if method_name == "3d_slice_merge" %}
+		三维细分合并
+	{% endif %}
+	{% if method_name == "time_space" %}
+		先时间再空间
+	{% endif %}
+	{% if method_name == "space_time" %}
+		先空间再时间
+	{% endif %}
+方法生成图片成功！！！<br>
+{% endif %}
+<form action="{% url 'rhythm:select_to_generate_image' %}" method="post">
+{% csrf_token %}          
+<input type="radio" name="choice" id="choice1" value="2d_equal_grid">
+<label 	for="choice1">二维等网络</label><br>
+<input type="radio" name="choice" id="choice2" value="2d_kdtree">
+<label  for="choice2">二维kdtree</label><br>
+<input type="radio" name="choice" id="choice3" value="3d_equal_grid">
+<label  for="choice3">三维等网络</label><br>
+<input type="radio" name="choice" id="choice4" value="3d_kdtree">
+<label  for="choice4">三维kdtree</label><br>
+<input type="radio" name="choice" id="choice5" value="3d_slice_merge">
+<label  for="choice5">三维细分合并</label><br>
+<input type="radio" name="choice" id="choice6" value="time_space">
+<label  for="choice6">先时间再空间</label><br>
+<input type="radio" name="choice" id="choice7" value="space_time">
+<label  for="choice7">先空间再时间</label><br>
+<!--<select name="number">
+    <option value="1">1</option>
+    <option value="3">3</option>
+</select><br>-->
+<!-- 
+<input type="number" placeholder="0" step="2" min="0" max="10" name="argument" id="argument">  -->
+<input type="text" name="file_name" placeholder="例如: dataset1.csv" maxlength="100" />
+<input type="submit" value="运行">
+<!-- <input id="submit_button" type="submit" value="运行"> -->
+</form>
+Tips: 如果生成图片成功，页面会有文字提示。出现"无法访问此网站"的情况的原因是，目前生成图片的方法比较不稳定，此时一般是服务器内部出错停止运行，需要重新启动服务器，重新提交数据。
+<!-- <div id="ci"></div>
+<script type="text/javascript">
+	$("#submit_button").click(function(){
+
+    // $("img",this).remove();
+    $("#ci").html('<img src="https://gifimage.net/wp-content/uploads/2018/04/please-wait-gif-transparent-12.gif" />');
+    return false;
+});
+</script> -->

@@ -12,6 +12,7 @@
 <!-- <link rel="stylesheet" href="css/base.css"> -->
 <link rel="icon" href="{% static 'rhythm/img/connected-car.jpg' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'rhythm/css/index_association.css' %}">
+<!--<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>-->
 </head>
 
 <body>
@@ -150,31 +151,24 @@
         <ul class="div_pp_ul">
           <li>选择时间：
             <select name="method10" id="method10"  form="form3" >
-              <option value="volvo">全天</option>
-              <option value="saab">0点—1点</option>
-              <option value="opel">1点-2点</option>
-              <option value="audi">2点-3点</option>
-              <option value="audi">3点-4点</option>
-              <option value="audi">4点-5点</option>
-              <option value="audi">5点-6点</option>
-              <option value="audi">6点-7点</option>
-              <option value="audi">7点-8点</option>
-              <option value="audi">8点-9点</option>
-              <option value="audi">9点-10点</option>
-              <option value="audi">10点-11点</option>
-              <option value="audi">11点-12点</option>
-              <option value="audi">12点-13点</option>
-              <option value="audi">13点-14点</option>
-              <option value="audi">14点-15点</option>
-              <option value="audi">15点-16点</option>
-              <option value="audi">16点-17点</option>
-              <option value="audi">17点-18点</option>
-              <option value="audi">18点-19点</option>
-              <option value="audi">19点-20点</option>
-              <option value="audi">20点-22点</option>
-              <option value="audi">21点-22点</option>
-              <option value="audi">22点-23点</option>
-              <option value="audi">23点-24点</option>
+              <option value="6_7">6点-7点</option>
+              <option value="7_8">7点-8点</option>
+              <option value="8_9">8点-9点</option>
+              <option value="9_10">9点-10点</option>
+              <option value="10_11">10点-11点</option>
+              <option value="11_12">11点-12点</option>
+              <option value="12_13">12点-13点</option>
+              <option value="13_14">13点-14点</option>
+              <option value="14_15">14点-15点</option>
+              <option value="15_16">15点-16点</option>
+              <option value="16_17">16点-17点</option>
+              <option value="17_18">17点-18点</option>
+              <option value="18_19">18点-19点</option>
+              <option value="19_20">19点-20点</option>
+              <option value="20_21">20点-22点</option>
+              <option value="21_22">21点-22点</option>
+              <option value="22_23">22点-23点</option>
+              <option value="23_24">23点-24点</option>
             </select>
           </li>
           <li>
@@ -204,31 +198,24 @@
           <ul class="div_pp_ul">
             <li>选择时间：
               <select name="method11" id="method11"  form="form4" >
-                <option value="volvo">全天</option>
-                <option value="saab">0点—1点</option>
-                <option value="opel">1点-2点</option>
-                <option value="audi">2点-3点</option>
-                <option value="audi">3点-4点</option>
-                <option value="audi">4点-5点</option>
-                <option value="audi">5点-6点</option>
-                <option value="audi">6点-7点</option>
-                <option value="audi">7点-8点</option>
-                <option value="audi">8点-9点</option>
-                <option value="audi">9点-10点</option>
-                <option value="audi">10点-11点</option>
-                <option value="audi">11点-12点</option>
-                <option value="audi">12点-13点</option>
-                <option value="audi">13点-14点</option>
-                <option value="audi">14点-15点</option>
-                <option value="audi">15点-16点</option>
-                <option value="audi">16点-17点</option>
-                <option value="audi">17点-18点</option>
-                <option value="audi">18点-19点</option>
-                <option value="audi">19点-20点</option>
-                <option value="audi">20点-22点</option>
-                <option value="audi">21点-22点</option>
-                <option value="audi">22点-23点</option>
-                <option value="audi">23点-24点</option>
+                <option value="6_7">6点-7点</option>
+                <option value="7_8">7点-8点</option>
+                <option value="8_9">8点-9点</option>
+                <option value="9_10">9点-10点</option>
+                <option value="10_11">10点-11点</option>
+                <option value="11_12">11点-12点</option>
+                <option value="12_13">12点-13点</option>
+                <option value="13_14">13点-14点</option>
+                <option value="14_15">14点-15点</option>
+                <option value="15_16">15点-16点</option>
+                <option value="16_17">16点-17点</option>
+                <option value="17_18">17点-18点</option>
+                <option value="18_19">18点-19点</option>
+                <option value="19_20">19点-20点</option>
+                <option value="20_21">20点-22点</option>
+                <option value="21_22">21点-22点</option>
+                <option value="22_23">22点-23点</option>
+                <option value="23_24">23点-24点</option>
               </select>
             </li>
             <li>
@@ -247,35 +234,37 @@
       </div>
     </div>
   </div>
-  
-  <!--POI分布热力图--> 
-  <!--
-<div class="left div_chart_item">
-  <div class="div_chart_item01">
-    <div class="div_any_title"><img src="{% static 'rhythm/img/title_1.png' %}">数据统计热力图 </div>
-    <div id="map_div"> </div>
-  </div>
 </div>
---> 
-</div>
-<script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.js"></script> 
-<!--	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>--> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script> 
+<!--
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>	
+-->
+<script type="text/javascript" src="{% static 'rhythm/js/echarts_using/echarts.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'rhythm/js/echarts_using/echarts-gl.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'rhythm/js/echarts_using/ecStat.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'rhythm/js/echarts_using/dataTool.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'rhythm/js/echarts_using/china.js' %}"></script>
+<script type="text/javascript" src="{% static 'rhythm/js/echarts_using/world.js' %}"></script>
+<script type="text/javascript" src="{% static 'rhythm/js/echarts_using/bmap.min.js' %}"></script>
+
+	
 <script type="text/javascript" src="{% static 'rhythm/js/jquery/jQuery-2.2.0.min.js' %}"></script> 
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j&callback"></script> 
+<script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+	
 <script type="text/javascript" src="{% static 'rhythm/js/base.js' %}"></script> 
 <script type="text/javascript" src="{% static 'rhythm/js/chart_pie.js' %}"></script> 
 <script type="text/javascript" src="{% static 'rhythm/js/chart_road_section.js' %}"></script> 
 <script type="text/javascript" src="{% static 'rhythm/js/association_function.js' %}"></script> 
 <script type="text/javascript" src="{% static 'rhythm/js/chart_line.js' %}"></script> 
-<!--<script type="text/javascript" src="{% static 'rhythm/js/map.js' %}"></script> --> 
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j&callback"></script> 
-<script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+
+
 </body>
 
 </html>

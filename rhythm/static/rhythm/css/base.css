@@ -510,6 +510,24 @@ a:hover {
     width: 23%;
     margin-right: 2%;
 }
+.div_table_box_showdata {
+/*    height: auto;*/
+	width: 100%;
+	text-align: center;
+    margin-right: 2%;
+	margin-top: 15px;
+	float: left;
+}
+.div_any_child_toolbar_showdata {
+    float: none;
+    width: 100%;
+/*    height: auto;*/
+    box-shadow: -10px 0px 15px #034c6a inset, /*å·¦è¾¹é˜´å½±*/  0px -10px 15px #034c6a inset, /*ä¸Šè¾¹é˜´å½±*/  10px 0px 15px #034c6a inset, /*å³è¾¹é˜´å½±*/  0px 10px 15px #034c6a inset;
+    border: 1px solid #034c6a;
+    box-sizing: border-box;
+    position: relative;
+/*    margin-top: 30px;*/
+}
 .bottom1 {
     border-radius: 5px;
     background-color: #034c6a;
@@ -572,6 +590,13 @@ a:hover {
     margin-top: 0!important;
     position: relative;
 }
+.table_showdata {
+	margin-top: 30px;
+	overflow-y: scroll;
+	height: 200px;
+	margin-bottom:30px;
+/*	font: 20;*/
+}
 .table_p01 table td {
     padding: 6px 0;
 }
@@ -579,7 +604,7 @@ a:hover {
     width: 100%;
     height: 100%;
     border-collapse: collapse;
-    position: absolute;
+/*    position: absolute;*/
     text-align: center;
 }
 .table_p table thead th {
@@ -592,7 +617,13 @@ a:hover {
 .table_p table tbody {
     color: #ffffff;
     font-size: 13px;
+/*	text-align: center;*/
 }
+#csv_input{
+	text-align: center;
+	padding-left: 60px;
+}
+
 .table_p table tbody tr:nth-child(2n+1) {
     background-color: #072951;
     box-shadow: -10px 0px 15px #034c6a inset,  10px 0px 15px #034c6a inset;

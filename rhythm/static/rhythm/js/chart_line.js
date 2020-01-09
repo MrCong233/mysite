@@ -34,76 +34,64 @@ function submit_data_line() {
 	var csrftoken = getCookie('csrftoken');
 	//包装数据
 	var formData = {
-		'method': $('input[name=method]:checked').val(),
-		'method1': $('input[name=method1]').val(),
-		'method2': $('input[name=method2]').val(),
-		'method3': $('input[name=method3]').val(),
-		'method4': $('input[name=method4]').val(),
-		'method5': $('input[name=method5]').val(),
-		'method6_1': $('input[name=method6_1]').val(),
-		'method6_2': $('input[name=method6_2]').val(),
-		'method7_1': $('input[name=method7_1]').val(),
-		'method7_2': $('input[name=method7_2]').val(),
-		'method8_1': $('input[name=method8_1]').val(),
-		'method8_2': $("#method8_2  option:selected").val(),
-		'method9': $('input[name=method9]').val(),
-		'method10': $("#method10  option:selected").val(),
-		'dataset': $('input[name=dataset]:checked').val()
+		'method': 'method10',
+		'method10': $("#method10  option:selected").val()
 	};
 	console.log(formData);
-	//如果正在加载则不能重复提交
-	if (submitted == true) {
-		alert("正在加载请耐心等待！");
-		return;
-	}
-
-	console.log(formData);
 	//发送后submited=true，并更换加载图片，表示正在加载。
-	submitted = true;
 	method_choice = formData["method"];
 	//	$('#final_image').attr('src', '/static/rhythm/img/loading.gif');
-
-	//发送请求
-	$.ajaxSetup({
-		beforeSend: function (xhr, settings) {
-			if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-				xhr.setRequestHeader("X-CSRFToken", csrftoken);
-			}
-		}
-	});
-	$.ajax({
-		//几个参数需要注意一下
-		type: "POST", //方法类型
-		dataType: "json", //预期服务器返回的数据类型
-		//		url: "select/", //url
-		//		url:"/static/rhythm/demo_test.txt",
-		url: "/static/rhythm/data_for_test/poi.json",
-		data: formData,
-		success: function (data) {
-			//有返回值
-			submitted = false;
-			makeChart_line(data);
-		},
-		error: function () {
-			alert("异常！");
-			submitted = false;
-		}
-	});
-
-	function handle(result) {
-
-		console.log(result);
-		//		alert('hello world ');
+	
+	if (method_choice == 'method10') {
+		method_choice = "";
+		time = formData['method10'];
+		
+		//暂时数据写死
+//		time = '6_7';
+		
+		url = "/static/rhythm/json/taxi_track_one_hour_poi_road/20140803_taxi_track_" + time + "_poi_road" + ".json";
+		$.getJSON(url, function (result) {
+			console.log(result);
+			makeChart_line(result)
+		});
 	}
-}
 
+}
+//将poi频率向量转换成poi概率向量
+function handle_data(data){
+	var length = data.length;
+	var t = [];
+	var sum = 0;
+	for(var i=0;i<length;i++){
+		sum+=data[i];
+	}
+	for(var ii=0 ;ii<length;ii++){
+		var tmp = data[ii]*1.0/(sum+0.0);
+		t.push(tmp);
+	}
+	return t;
+}
 function makeChart_line(data) {
+	var poi_types = data["poi_types"];
+	
+	var poi_probability = handle_data(data["whole_poi_vector"]);
+	console.log(poi_probability);
+//	return ;
 	var myChart = echarts.init($("#chart_3")[0]);
-	var len = data.length;
+	var len = poi_types.length;
+	
+	//生成一段序列
+	var ls = [];
+	var lg = data['poi_types'].length;
+	for(var i=0;i<lg;i++){
+		ls.push(i+1);
+	}
+	
+	
 	var option = {
 		backgroundColor: "#fff",
 		title: {
-			text: '成都市POI热度统计',
+			text: '成都市POI概率分布',
 		},
 		tooltip: {
 			trigger: 'axis',
@@ -112,62 +100,30 @@ function makeChart_line(data) {
 				var poi = params[0].data.poi;
 				var value = params[0].value;
 				var name = params[0].name;
-				return value + "<br/> POI:" + poi;
+				return  '序号:' + name+ "<br/>名称:" + poi+ '<br/>出现频率:' + value;
 			}
 		},
-		xAxis: {
-			data: data.map(function (item) {
-				return item[2];
-			})
+//		xAxis: {
+//			data: data.map(function (item) {
+//				return item[2];
+//			})
+//		},
+		xAxis:{
+			data: ls,
+			name: '编号'
 		},
 		yAxis: {
 			splitLine: {
-				show: false
-			}
+				show: false,
+				
+			},
+			name: '频率'
 		},
 		dataZoom: [{
 			startValue: 1
 		}, {
 			type: 'inside'
 		}],
-		visualMap: {
-			type: "piecewise",
-			top: 10,
-			right: 10,
-			pieces: [{
-				gt: 0,
-				lte: 0.2,
-				label: "0 - 0.2",
-				color: '#096'
-			}, {
-				gt: 0.2,
-				lte: 0.4,
-				label: "0.2 - 0.4",
-				color: '#ffde33'
-			}, {
-				gt: 0.4,
-				lte: 0.6,
-				label: "0.4 - 0.6",
-				color: '#ff9933'
-			}, {
-				gt: 0.6,
-				lte: 0.8,
-				label: "0.6 - 0.8",
-				color: '#cc0033'
-			}, {
-				gt: 0.8,
-				lte: 1.0,
-				label: "0.8 - 1.0",
-				color: '#660099'
-			}, {
-				gt: 1.0,
-				label: "> 1.0",
-				color: '#7e0023'
-			}],
-			outOfRange: {
-				color: '#999'
-			}
-		},
 		series: {
 			name: 'Beijing AQI',
 			type: 'line',
@@ -175,9 +131,9 @@ function makeChart_line(data) {
 				var t = [];
 				for (var i = 0; i < len; i++) {
 					var tmp = {
-						value: data[i][1],
-						name: data[i][2],
-						poi: data[i][0]
+						value: poi_probability[i],
+						name: i+1,
+						poi: poi_types[i]
 					};
 					t.push(tmp);
 				}

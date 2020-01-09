@@ -1,0 +1,20 @@
+2020-01-09 21:29:53,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"
+2020-01-09 21:32:32,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"
+2020-01-09 21:35:35,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"
+2020-01-09 21:36:15,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"

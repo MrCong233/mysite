@@ -1,0 +1,15 @@
+2020-01-08 10:14:30,"Traceback (most recent call last):
+  File ""process_upload_od.py"", line 31, in process_original_od
+    ""Lack of one or all specified keys, please check date_time, o_latitude, o_longitude, d_latitude, d_longitude, weather."")
+KeyError: 'Lack of one or all specified keys, please check date_time, o_latitude, o_longitude, d_latitude, d_longitude, weather.'
+"
+2020-01-08 10:16:35,"Traceback (most recent call last):
+  File ""process_upload_od.py"", line 31, in process_original_od
+    ""Lack of one or all specified keys, please check date_time, o_latitude, o_longitude, d_latitude, d_longitude, weather."")
+KeyError: 'Lack of one or all specified keys, please check date_time, o_latitude, o_longitude, d_latitude, d_longitude, weather.'
+"
+2020-01-08 10:17:35,"Traceback (most recent call last):
+  File ""process_upload_od.py"", line 38, in process_original_od
+    ""Number of records without null value is less than 1024 or columns count is not 4."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 4.
+"

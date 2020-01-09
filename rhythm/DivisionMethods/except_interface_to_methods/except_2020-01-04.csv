@@ -1,0 +1,160 @@
+2020/01/04 12:23:10,time_space,"[1, 2]","Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 14, in interface_to_generate_img
+    file_name, method, args)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\algorithmv2\re_gui21.py"", line 103, in figure_to_img
+    parameter_second, whole_figure)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\algorithmv2\time_space.py"", line 89, in draw_fig
+    df0 = data[row[i]:row[i+1], 1:]
+IndexError: index 2 is out of bounds for axis 0 with size 2
+"
+2020/01/04 12:53:43,2d_equal_grid,[2],"Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 14, in interface_to_generate_img
+    file_name, method, args, test_or_not)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\re_gui21.py"", line 67, in figure_to_img
+    database_ = np.array(pd.read_csv(dataset_path + "".csv"", header=None))
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 895, in __init__
+    self._make_engine(self.engine)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File ""pandas/_libs/parsers.pyx"", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File ""pandas/_libs/parsers.pyx"", line 689, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv' does not exist: b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv'
+"
+2020/01/04 12:54:36,2d_equal_grid,[2],"Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 14, in interface_to_generate_img
+    file_name, method, args, test_or_not)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\re_gui21.py"", line 67, in figure_to_img
+    database_ = np.array(pd.read_csv(dataset_path + "".csv"", header=None))
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 895, in __init__
+    self._make_engine(self.engine)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File ""pandas/_libs/parsers.pyx"", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File ""pandas/_libs/parsers.pyx"", line 689, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv' does not exist: b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv'
+"
+2020/01/04 13:35:34,2d_equal_grid,[2],"Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 14, in interface_to_generate_img
+    file_name, method, args, test_or_not)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\re_gui21.py"", line 66, in figure_to_img
+    database_ = np.array(pd.read_csv(dataset_path + "".csv"", header=None))
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 895, in __init__
+    self._make_engine(self.engine)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File ""pandas/_libs/parsers.pyx"", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File ""pandas/_libs/parsers.pyx"", line 689, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv' does not exist: b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv'
+"
+2020/01/04 13:36:03,2d_equal_grid,[2],"Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 14, in interface_to_generate_img
+    file_name, method, args, test_or_not)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\re_gui21.py"", line 66, in figure_to_img
+    database_ = np.array(pd.read_csv(dataset_path + "".csv"", header=None))
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 895, in __init__
+    self._make_engine(self.engine)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File ""pandas/_libs/parsers.pyx"", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File ""pandas/_libs/parsers.pyx"", line 689, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv' does not exist: b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv'
+"
+2020/01/04 13:36:20,2d_equal_grid,[2],"Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 14, in interface_to_generate_img
+    file_name, method, args, test_or_not)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\re_gui21.py"", line 66, in figure_to_img
+    database_ = np.array(pd.read_csv(dataset_path + "".csv"", header=None))
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 895, in __init__
+    self._make_engine(self.engine)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File ""pandas/_libs/parsers.pyx"", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File ""pandas/_libs/parsers.pyx"", line 689, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv' does not exist: b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv'
+"
+2020/01/04 13:36:55,2d_equal_grid,[2],"Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 14, in interface_to_generate_img
+    file_name, method, args, test_or_not)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\re_gui21.py"", line 66, in figure_to_img
+    database_ = np.array(pd.read_csv(dataset_path + "".csv"", header=None))
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 895, in __init__
+    self._make_engine(self.engine)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File ""pandas/_libs/parsers.pyx"", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File ""pandas/_libs/parsers.pyx"", line 689, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv' does not exist: b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv'
+"
+2020/01/04 14:06:11,time_space,"[2, 2]","Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 14, in interface_to_generate_img
+    file_name, method, args, test_or_not)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\re_gui21.py"", line 66, in figure_to_img
+    database_ = np.array(pd.read_csv(dataset_path + "".csv"", header=None))
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 895, in __init__
+    self._make_engine(self.engine)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File ""D:\Anaconda3\lib\site-packages\pandas\io\parsers.py"", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File ""pandas/_libs/parsers.pyx"", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File ""pandas/_libs/parsers.pyx"", line 689, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv' does not exist: b'E:\\acer\\VSProjects\\mysite_2.1.2\\rhythm\\division_methods\\dataset\\data1024.csv.csv'
+"
+2020-01-04 18:10:22,time_space,"[1, 2]","Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 17, in interface_to_generate_img
+    file_name, method, args, test_or_not)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\re_gui21.py"", line 111, in figure_to_img
+    parameter_second, whole_figure)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\time_space.py"", line 89, in draw_fig
+    df0 = data[row[i]:row[i+1], 1:]
+IndexError: index 2 is out of bounds for axis 0 with size 2
+"
+2020-01-04 18:19:39,time_space,"[1, 2]","Traceback (most recent call last):
+  File ""interface_to_methods.py"", line 17, in interface_to_generate_img
+    file_name, method, args, test_or_not)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\re_gui21.py"", line 111, in figure_to_img
+    parameter_second, whole_figure)
+  File ""E:\acer\VSProjects\mysite_2.1.2\rhythm\division_methods\time_space.py"", line 89, in draw_fig
+    df0 = data[row[i]:row[i+1], 1:]
+IndexError: index 2 is out of bounds for axis 0 with size 2
+"

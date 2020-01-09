@@ -1,0 +1,65 @@
+2020-01-07 16:50:19,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"
+2020-01-07 17:37:15,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:38:16,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:44:23,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:44:37,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:44:41,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:44:55,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:45:12,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:45:55,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:47:34,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:49:40,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:56:51,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"
+2020-01-07 17:56:57,"Traceback (most recent call last):
+  File ""D:\File\Project\repository\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 28, in process_original_csv
+    ""Number of records without null value is less than 1024 or columns count is not 3."")
+IndexError: Number of records without null value is less than 1024 or columns count is not 3.
+"

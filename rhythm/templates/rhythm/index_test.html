@@ -1,30 +1,39 @@
 {% if json_file %}
-    {{ method_name }}<br>
-    {{ parameter }}<br>
-    {{ json_file }}
+{{ method_name }}<br>
+{{ parameter }}<br>
+{{ json_file }}
 {% else %}
-    <p>no json data.</p>
+<p>no json data.</p>
 {% endif %}
 <form action="{% url 'rhythm:select' %}" method="post">
-{% csrf_token %}
-<input type="radio" name="choice" id="choice1" value="你好">
-<label 	for="choice1">choice 1</label><br>
-<input type="radio" name="choice" id="choice2" value="你好呀">
-<label  for="choice2">choice 2</label><br>
-<input type="radio" name="choice" id="choice3" value="3">
-<label  for="choice3">choice 3</label><br>
-<input type="radio" name="choice" id="choice4" value="4">
-<label  for="choice4">choice 4</label><br>
-<input type="radio" name="choice" id="choice5" value="5">
-<label  for="choice5">choice 5</label><br>
-<input type="radio" name="choice" id="choice6" value="6">
-<label  for="choice6">choice 6</label><br>
-<input type="radio" name="choice" id="choice7" value="7">
-<label  for="choice7">choice 7</label><br>
-<!--<select name="number">
+    {% csrf_token %}
+    <input type="radio" name="choice" id="choice1" value="你好">
+    <label for="choice1">choice 1</label><br>
+    <input type="radio" name="choice" id="choice2" value="你好呀">
+    <label for="choice2">choice 2</label><br>
+    <input type="radio" name="choice" id="choice3" value="3">
+    <label for="choice3">choice 3</label><br>
+    <input type="radio" name="choice" id="choice4" value="4">
+    <label for="choice4">choice 4</label><br>
+    <input type="radio" name="choice" id="choice5" value="5">
+    <label for="choice5">choice 5</label><br>
+    <input type="radio" name="choice" id="choice6" value="6">
+    <label for="choice6">choice 6</label><br>
+    <input type="radio" name="choice" id="choice7" value="7">
+    <label for="choice7">choice 7</label><br>
+    <!--<select name="number">
     <option value="1">1</option>
     <option value="3">3</option>
 </select><br>-->
-<input type="number" placeholder="0" step="2" min="0" max="10" name="argument" id="argument"> 
-<input type="submit" value="运行">
+    <input type="number" placeholder="0" step="2" min="0" max="10" name="argument" id="argument">
+    <input type="submit" value="运行">
+</form>
+
+<!-- <form action="upload.php" method="post" enctype="multipart/form-data"> -->
+<form action="{% url 'rhythm:upload_csv' %}" method="post" enctype="multipart/form-data">
+    <!-- <form action="{% url 'rhythm:upload_csv' %}" method="post"> -->
+    {% csrf_token %}
+    Select CSV file to upload
+    <input type="file" name="csv_file" accept=".csv">
+    <input type="submit" value="Upload File" name="submit">
 </form>

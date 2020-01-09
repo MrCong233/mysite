@@ -1,0 +1,34 @@
+2020-01-04 18:21:23,"Traceback (most recent call last):
+  File ""process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of specified one or all keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of specified one or all keys, please check latitude, longitude, date_time.'
+"
+
+2020-01-04 18:21:56,"Traceback (most recent call last):
+  File ""process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of specified one or all keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of specified one or all keys, please check latitude, longitude, date_time.'
+"
+
+2020-01-04 18:24:11,"Traceback (most recent call last):
+  File ""process_upload_original.py"", line 28, in process_original_csv
+    ""Records count is less than 1024 or columns count is less than 3."")
+IndexError: Records count is less than 1024 or columns count is less than 3.
+"
+
+2020-01-04 19:02:16,"Traceback (most recent call last):
+  File ""process_upload_original.py"", line 28, in process_original_csv
+    ""Records count is less than 1024 or columns count is less than 3."")
+IndexError: Records count is less than 1024 or columns count is less than 3.
+"
+
+2020-01-04 19:29:39,"Traceback (most recent call last):
+  File ""process_upload_original.py"", line 28, in process_original_csv
+    ""Records count is less than 1024 or columns count is not 3."")
+IndexError: Records count is less than 1024 or columns count is not 3.
+"
+2020-01-04 21:02:20,"Traceback (most recent call last):
+  File ""process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"

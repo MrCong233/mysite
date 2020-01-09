@@ -1,0 +1,26 @@
+2020-01-09 18:59:52,"Traceback (most recent call last):
+  File ""D:\Anaconda3\lib\site-packages\pandas\core\indexes\base.py"", line 2897, in get_loc
+    return self._engine.get_loc(key)
+  File ""pandas/_libs/index.pyx"", line 107, in pandas._libs.index.IndexEngine.get_loc
+  File ""pandas/_libs/index.pyx"", line 131, in pandas._libs.index.IndexEngine.get_loc
+  File ""pandas/_libs/hashtable_class_helper.pxi"", line 1607, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File ""pandas/_libs/hashtable_class_helper.pxi"", line 1614, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'traj_num'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""process_upload_sequence.py"", line 124, in process_original_traj
+    data_range, rules = map_match_result(df, file_path)
+  File ""process_upload_sequence.py"", line 51, in map_match_result
+    'traj_num_range': list(match_df['traj_num'].unique()),
+  File ""D:\Anaconda3\lib\site-packages\pandas\core\frame.py"", line 2995, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File ""D:\Anaconda3\lib\site-packages\pandas\core\indexes\base.py"", line 2899, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File ""pandas/_libs/index.pyx"", line 107, in pandas._libs.index.IndexEngine.get_loc
+  File ""pandas/_libs/index.pyx"", line 131, in pandas._libs.index.IndexEngine.get_loc
+  File ""pandas/_libs/hashtable_class_helper.pxi"", line 1607, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File ""pandas/_libs/hashtable_class_helper.pxi"", line 1614, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'traj_num'
+"

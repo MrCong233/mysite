@@ -181,42 +181,6 @@
                   <td><input type="number" name="method7_1" id="method7_1" min="3" max="10" step="1" value="3" class="hide" />
                     <input type="number" name="method7_2" id="method7_2" min="3" max="10" step="1" value="3" class="hide" /></td>
                 </tr>
-                <!--
-                <tr>
-                  <td>8&nbsp;
-                    <input type="radio" name="method" value="method8" onclick="onchangeradio(this,8)"></td>
-                  <td>关系图</td>
-                  <td><input type="number" name="method8_1" id="method8_1" min="2" max="8" step="1" value="2" class="hide" />
-                    <select name="method8_2" id="method8_2" class="hide" form="form1" >
-                      <option value="6_7">6点-7点</option>
-                      <option value="7_8">7点-8点</option>
-                      <option value="8_9">8点-9点</option>
-                      <option value="9_10">9点-10点</option>
-                      <option value="10_11">10点-11点</option>
-                      <option value="11_12">11点-12点</option>
-                      <option value="12_13">12点-13点</option>
-                      <option value="13_14">13点-14点</option>
-                      <option value="14_15">14点-15点</option>
-                      <option value="15_16">15点-16点</option>
-                      <option value="16_17">16点-17点</option>
-                      <option value="17_18">17点-18点</option>
-                      <option value="18_19">18点-19点</option>
-                      <option value="19_20">19点-20点</option>
-                      <option value="20_21">20点-22点</option>
-                      <option value="21_22">21点-22点</option>
-                      <option value="22_23">22点-23点</option>
-                      <option value="23_24">23点-24点</option>
-                    </select></td>
-                </tr>
---> 
-                <!--
-                <tr>
-                  <td>9&nbsp;
-                    <input type="radio" name="method" value="method9" onclick="onchangeradio(this,9)"></td>
-                  <td>分时段网络</td>
-                  <td><input type="number" name="method9" id="method9" min="5" max="30" step="5" value="5" class="hide" /></td>
-                </tr>
--->
               </tbody>
             </table>
           </div>
@@ -229,10 +193,13 @@
             <table>
               <thead>
                 <tr>
+                  <th><input type="file"  id="csv_input" name="csv_file" onchange="importf(this)" accept=".csv"/></th>
+                  <!--
                   <th>dataset1&nbsp;
                     <input type="radio" name="dataset" value="dataset1.csv" /></th>
                   <th>dataset2&nbsp;
                     <input type="radio" name="dataset" value="dataset2.csv" /></th>
+--> 
                 </tr>
               </thead>
               <tbody>
@@ -252,32 +219,31 @@
       <div id="div_img_show"><img id="final_image" class="images" src="{% static 'rhythm/img/instruction.png' %}"></div>
     </div>
   </div>
+  <!--	数据展示表格--> 
 </div>
-<!--分析图表--> 
-<!--POI分布热力图--> 
-<!--
-<div class="left div_chart_item">
-  <div class="div_chart_item01">
-    <div class="div_any_title"><img src="{% static 'rhythm/img/title_1.png' %}">数据统计热力图 </div>
-    <div id="map_div"> </div>
+<div class="div_table_box_showdata">
+  <div class="div_any_child_toolbar_showdata">
+    <div class="div_any_title"><img src="{% static 'rhythm/img/title_4.png' %}">数据展示</div>
+    <div class="table_showdata table_p">
+      <table >
+		   <thead>
+                <tr>
+                  <th>data_time</th><th>longitude</th><th>latitude</th><th>data_time</th><th>longitude</th><th>latitude</th><th>data_time</th><th>longitude</th><th>latitude</th>
+                </tr>
+              </thead>
+		  <tbody id="demo">
+		  </tbody>
+      </table>
+    </div>
   </div>
 </div>
---> 
-<script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.js"></script> 
-<!--	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>--> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script> 
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script> 
 <script type="text/javascript" src="{% static 'rhythm/js/jquery/jQuery-2.2.0.min.js' %}"></script> 
-<script type="text/javascript" src="{% static 'rhythm/js/base.js' %}"></script> 
+<script type="text/javascript" src="{% static 'rhythm/js/running_ontime/data_division.js' %}"></script> 
+<script type="text/javascript" src="{% static 'rhythm/js/running_ontime/xlsx.core.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'rhythm/js/running_ontime/ajaxfileupload.js' %}"></script> 
 <script type="text/javascript" src="{% static 'rhythm/js/chart_pie.js' %}"></script> 
 <script type="text/javascript" src="{% static 'rhythm/js/chart_road_section.js' %}"></script> 
 <script type="text/javascript" src="{% static 'rhythm/js/chart_line.js' %}"></script> 
-<!--<script type="text/javascript" src="{% static 'rhythm/js/map.js' %}"></script> --> 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j&callback"></script> 
 <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
 </body>
