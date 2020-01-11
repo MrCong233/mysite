@@ -18,3 +18,28 @@ KeyError: 'Lack of one or all specified keys, please check latitude, longitude, 
     ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
 KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
 "
+2020-01-09 22:33:11,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"
+2020-01-09 22:34:11,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"
+2020-01-09 22:38:44,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"
+2020-01-09 22:39:22,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"
+2020-01-09 22:40:21,"Traceback (most recent call last):
+  File ""E:\acer\VSProjects\mysite\rhythm\DivisionMethods\process_upload_original.py"", line 21, in process_original_csv
+    ""Lack of one or all specified keys, please check latitude, longitude, date_time."")
+KeyError: 'Lack of one or all specified keys, please check latitude, longitude, date_time.'
+"

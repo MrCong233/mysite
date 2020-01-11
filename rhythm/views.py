@@ -2,9 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
+from django.contrib.auth.hashers import make_password
 from json import dumps
 from pandas import DataFrame
 import os.path
+from hashlib import md5
+from time import time
 from .DivisionMethods import interface_to_methods, process_upload_original, delete_previous_imgs
 
 # Create your views here.
@@ -19,6 +22,17 @@ def index_association(request):
 
 
 def index_test(request):
+    # tuple_dict = request.META.items()  # 将字典转换成可遍历的元组。
+
+    # # tuple_dict.sort()  # 对元组进行排序，方便查看。
+
+    # html = []
+
+    # for k, v in tuple_dict:
+
+    #     html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
+
+    # return HttpResponse('<table>%s</table>' % '\n'.join(html))
     return render(request, 'rhythm/index_test.html')
 
 
@@ -26,6 +40,7 @@ def select(request):
     # get method_name
     post_ = request.POST
     method_name = post_['method']
+    token = post_['token']
     # first seven methods names
     first_seven_methods = [
         'method1',
@@ -37,7 +52,7 @@ def select(request):
         'method7'
     ]
     if method_name in first_seven_methods:
-        content = deal_with_first_seven_methods(post_, method_name)
+        content = deal_with_first_seven_methods(post_, method_name, token)
         return HttpResponse(content)
 
 
@@ -69,14 +84,15 @@ def upload_csv(request):
         }
         return HttpResponse(dumps(result, ensure_ascii=False))
         # return HttpResponse(result['error'])
+    token = generate_token()
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    # new_row = DataFrame(chunk)
-    file_path = '{}\\DivisionMethods\\dataset\\upload_original.csv'.format(
-        current_dir)
+    file_path = '{}\\DivisionMethods\\dataset\\upload_original-{}.csv'.format(
+        current_dir, token)
     with open(file_path, 'w+') as f:
         for chunk in csv_file.chunks():
             f.write(chunk.decode("utf-8"))
-    retn_result = process_upload_original.process_original_csv()
+    retn_result = process_upload_original.process_original_csv(token)
+    # retn_result = 0
     if retn_result == 1:
         result = {
             'error': "上传的文件不符合规定格式."
@@ -84,13 +100,14 @@ def upload_csv(request):
         return HttpResponse(dumps(result, ensure_ascii=False))
         # return HttpResponse(result['error'])
     result = {
-        'error': ""
+        'error': "",
+        'token': token
     }
     return HttpResponse(dumps(result, ensure_ascii=False))
     # return HttpResponse(result['error'])
 
 
-def deal_with_first_seven_methods(post, method_name):
+def deal_with_first_seven_methods(post, method_name, token):
     if method_name == "method1":
         method_full_name = "2d_equal_grid"
     if method_name == "method2":
@@ -112,14 +129,19 @@ def deal_with_first_seven_methods(post, method_name):
     else:
         parameter.append(int(post[method_name + "_1"]))
         parameter.append(int(post[method_name + "_2"]))
-    # delete previous images
-    delete_previous_imgs.delete_pngs()
     # generate img
     _, extra = interface_to_methods.interface_to_generate_img(
-        "upload_processed", method_full_name, parameter, False)
+        "upload_processed", token, method_full_name, parameter, False)
     # return img info
     context = {
         # "image_full_name": img_addr,
         "extra_information": extra,
     }
     return dumps(context)
+
+
+def generate_token():
+    curt_time = str(time())
+    md = md5()
+    md.update(curt_time.encode())
+    return md.hexdigest()

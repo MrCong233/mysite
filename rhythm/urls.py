@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('index_association/', views.index_association, name='index_association'),
     path('select/', views.select, name='select'),
-    # path('test', views.index_test, name='index'),
+    path('test', views.index_test, name='index_test'),
     path('upload_csv', views.upload_csv, name='upload_csv'),
 ]
 # urlpatterns = [
