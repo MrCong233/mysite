@@ -6,14 +6,13 @@ from pandas import read_csv, to_datetime, DataFrame
 from numpy import int64
 
 
-def process_original_csv(token):
+def process_original_csv():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     current_date = datetime.now().strftime("%Y-%m-%d")
     current_date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     try:
         start = default_timer()
-        df = read_csv(current_dir + "\\dataset\\" +
-                      "upload_original-{}.csv".format(token))
+        df = read_csv(current_dir + "\\dataset\\" + "upload_original.csv")
         # specified 3 headers
         keys = df.keys()
         if("latitude" not in keys or "longitude" not in keys or "date_time" not in keys):
@@ -44,18 +43,16 @@ def process_original_csv(token):
         # sort by timestamp
         df = df.sort_values(by='date_time')
         # save to csv
-        file_path = '{}\\dataset\\upload_processed-{}.csv'.format(
-            current_dir, token)
+        file_path = '{}\\dataset\\upload_processed.csv'.format(current_dir)
         # with open(file_path, 'a') as f:
         df.to_csv(file_path, header=False, index=False)
         stop = default_timer()
         run_time = stop - start
         results = {
-            'date_time': current_date_time,
-            'run_time': run_time,
-            'token': token
+            'date_time': [current_date_time],
+            'run_time': [run_time]
         }
-        new_row = DataFrame(results, index=[0])
+        new_row = DataFrame(results)
         file_path = '{}\\try_process_upload_original\\try_{}.csv'.format(
             current_dir, current_date)
         with open(file_path, 'a') as f:
@@ -65,8 +62,7 @@ def process_original_csv(token):
         # print(format_exc())
         results = {
             'date_time': current_date_time,
-            'exception_info': format_exc(),
-            'token': token
+            'exception_info': format_exc()
         }
         # print(results)
         new_row = DataFrame(results, index=[0])
@@ -77,4 +73,4 @@ def process_original_csv(token):
         return 1
 
 
-# print(process_original_csv())
+print(process_original_csv())
