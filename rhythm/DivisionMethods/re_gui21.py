@@ -119,7 +119,6 @@ def figure_to_img(dataset_, method_, args, test_or_not):
         img_name += method_ + "-" + \
             str(parameter_first) + "-" + str(parameter_second)
     img_address += img_name + ".png"
-    # img_address += img_name + "-{}.png".format(token)
     whole_figure.savefig(img_address)
     plt.close()
     # whole_figure.clf()
